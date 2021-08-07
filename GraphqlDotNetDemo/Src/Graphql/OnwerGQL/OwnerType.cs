@@ -17,7 +17,7 @@ namespace GraphqlDotNetDemo.Src.Graphql.OwnerGQL
             IDataLoaderContextAccessor dataLoader
         )
         {
-            Name = "Owner";
+            Name = nameof(Owner);
             Field(x => x.Id, type: typeof(NonNullGraphType<IdGraphType>)).Description("Id property from the owner object.");
             Field(x => x.Name, type: typeof(StringGraphType)).Description("Name property from the owner object.");
             Field(x => x.Address, type: typeof(StringGraphType)).Description("Address property from the owner object.");
