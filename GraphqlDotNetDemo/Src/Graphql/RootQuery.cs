@@ -8,12 +8,16 @@ namespace GraphqlDotNetDemo.Src.Graphql
     {
         public RootQuery(
             IOwnerService ownerService,
-            IAccountService accountService
+            IAccountService accountService,
+            IRoleService roleService,
+            IUserService userService
         )
         {
             Name = "Query";
             SetOwnerQueries(ownerService);
             SetAccountQueries(accountService);
+            SetRoleQueries(roleService);
+            SetUserQueries(userService);
         }
     }
 }
