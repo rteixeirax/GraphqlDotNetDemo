@@ -31,38 +31,37 @@ The [GraphQL .NET](https://graphql-dotnet.github.io/docs/getting-started/query-o
 
 ````graphql
 type Query {
-  account(accountId: String!): Account
-  accounts: [Account]
-  owner(ownerId: String!): Owner
   owners: [Owner]
+  owner(ownerId: String!): Owner
+  accounts: [Account]
+  account(accountId: String!): Account
   roles: [Role]
   users: [User]
 }
 
 type Owner {
-  accounts: [Account]
-
-  # Address property from the owner object.
-  address: String
-
   # Id property from the owner object.
   id: ID!
 
   # Name property from the owner object.
   name: String
+
+  # Address property from the owner object.
+  address: String
+  accounts: [Account]
 }
 
 type Account {
-  # Description property from the account object.
-  description: String
-
   # Id property from the account object.
   id: ID!
-  owner: Owner
+
+  # Description property from the account object.
+  description: String
 
   # OwnerId property from the account object.
   ownerId: ID
   type: AccountTypeEnum
+  owner: Owner
 }
 
 # Enumeration for the account type object.
@@ -74,33 +73,33 @@ enum AccountTypeEnum {
 }
 
 type Role {
-  # Role Code
-  code: String
-
   # Role ID
   id: ID!
 
   # Role Name
   name: String
+
+  # Role Code
+  code: String
   users: [User]
 }
 
 type User {
-  # User Name
-  email: String
-
   # User ID
   id: ID!
 
   # User Name
   name: String
-  role: Role
 
-  # User Role ID
-  roleId: ID
+  # User Name
+  email: String
 
   # User Status
   status: UserStatusEnum
+
+  # User Role ID
+  roleId: ID
+  role: Role
 }
 
 # Enumeration for the user status.
@@ -111,12 +110,12 @@ enum UserStatusEnum {
 }
 
 type Mutation {
-  accountCreate(data: AccountInput!): Account
-  accountDelete(accountId: ID!): String
-  accountUpdate(data: AccountInput!, accountId: String!): Account
   ownerCreate(data: OwnerInput!): Owner
-  ownerDelete(ownerId: ID!): String
   ownerUpdate(data: OwnerInput!, ownerId: String!): Owner
+  ownerDelete(ownerId: ID!): String
+  accountCreate(data: AccountInput!): Account
+  accountUpdate(data: AccountInput!, accountId: String!): Account
+  accountDelete(accountId: ID!): String
 }
 
 input OwnerInput {
