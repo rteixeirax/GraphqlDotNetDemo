@@ -23,8 +23,8 @@ namespace GraphqlDotNetDemo.Src.Graphql.OwnerGQL
             Field(x => x.Address, type: typeof(StringGraphType)).Description("Address property from the owner object.");
             Field<ListGraphType<AccountType>>("accounts", resolve: context =>
             {
-                var loader = dataLoader.Context
-                    .GetOrAddCollectionBatchLoader<Guid, Account>(nameof(dataLoaderService.AccountsByOwnerIdsAsync), dataLoaderService.AccountsByOwnerIdsAsync);
+                var loader = dataLoader.Context.GetOrAddCollectionBatchLoader<Guid, Account>(
+                    nameof(dataLoaderService.AccountsByOwnerIdAsync), dataLoaderService.AccountsByOwnerIdAsync);
 
                 return loader.LoadAsync(context.Source.Id);
             });

@@ -1,13 +1,20 @@
+using GraphQL.DataLoader;
 using GraphQL.Types;
 
 using GraphqlDotNetDemo.Src.Data.Models;
 using GraphqlDotNetDemo.Src.Graphql.RoleGQL;
+using GraphqlDotNetDemo.Src.Services;
+
+using System;
 
 namespace GraphqlDotNetDemo.Src.Graphql.UserGQL
 {
     public class UserType : ObjectGraphType<User>
     {
-        public UserType()
+        public UserType(
+            IDataLoaderService dataLoaderService,
+            IDataLoaderContextAccessor dataLoader
+        )
         {
             Name = nameof(User);
             Field(x => x.Id, type: typeof(NonNullGraphType<IdGraphType>)).Description("User ID");
@@ -15,7 +22,13 @@ namespace GraphqlDotNetDemo.Src.Graphql.UserGQL
             Field(x => x.Email, type: typeof(StringGraphType)).Description("User Name");
             Field(x => x.Status, type: typeof(UserStatusEnumType)).Description("User Status");
             Field(x => x.RoleId, type: typeof(IdGraphType)).Description("User Role ID");
-            Field<RoleType>("role", resolve: context => null); // TODO. Add DataLoader
+            Field<RoleType>("role", resolve: context =>
+            {
+                var loader = dataLoader.Context.GetOrAddBatchLoader<Guid, Role>(
+                    nameof(dataLoaderService.RoleByIdAsync), dataLoaderService.RoleByIdAsync);
+
+                return loader.LoadAsync(context.Source.RoleId);
+            });
         }
     }
 }

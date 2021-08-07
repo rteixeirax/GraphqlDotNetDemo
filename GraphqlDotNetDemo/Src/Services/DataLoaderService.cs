@@ -18,16 +18,28 @@ namespace GraphqlDotNetDemo.Src.Services
             this.repo = repo;
         }
 
-        public async Task<ILookup<Guid, Account>> AccountsByOwnerIdsAsync(IEnumerable<Guid> ownerIds)
+        public async Task<ILookup<Guid, Account>> AccountsByOwnerIdAsync(IEnumerable<Guid> ownerIds)
         {
-            var dataModels = await this.repo.Accounts.FindAllAsync(x => ownerIds.Contains(x.OwnerId));
-            return dataModels.ToLookup(x => x.OwnerId);
+            var dataModels = await this.repo.Accounts.FindAllAsync(account => ownerIds.Contains(account.OwnerId));
+            return dataModels.ToLookup(account => account.OwnerId);
         }
 
-        public async Task<IDictionary<Guid, Owner>> OwnersByIdAsync(IEnumerable<Guid> ownerIds)
+        public async Task<IDictionary<Guid, Owner>> OwnerByIdAsync(IEnumerable<Guid> ownerIds)
         {
-            var dataModels = await this.repo.Owners.FindAllAsync(x => ownerIds.Contains(x.Id));
-            return dataModels.ToDictionary(x => x.Id);
+            var dataModels = await this.repo.Owners.FindAllAsync(owner => ownerIds.Contains(owner.Id));
+            return dataModels.ToDictionary(owner => owner.Id);
+        }
+
+        public async Task<IDictionary<Guid, Role>> RoleByIdAsync(IEnumerable<Guid> roleIds)
+        {
+            var dataModels = await this.repo.Roles.FindAllAsync(role => roleIds.Contains(role.Id));
+            return dataModels.ToDictionary(role => role.Id);
+        }
+
+        public async Task<ILookup<Guid, User>> UsersByRoleIdAsync(IEnumerable<Guid> roleIds)
+        {
+            var dataModels = await this.repo.Users.FindAllAsync(user => roleIds.Contains(user.RoleId));
+            return dataModels.ToLookup(user => user.RoleId);
         }
     }
 }

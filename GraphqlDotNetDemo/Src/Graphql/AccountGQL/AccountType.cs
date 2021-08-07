@@ -24,8 +24,8 @@ namespace GraphqlDotNetDemo.Src.Graphql.AccountGQL
             Field(x => x.Type, type: typeof(AccountTypeEnumType));
             Field<OwnerType>("owner", resolve: context =>
             {
-                var loader = dataLoader.Context
-                    .GetOrAddBatchLoader<Guid, Owner>(nameof(dataLoaderService.OwnersByIdAsync), dataLoaderService.OwnersByIdAsync);
+                var loader = dataLoader.Context.GetOrAddBatchLoader<Guid, Owner>(
+                    nameof(dataLoaderService.OwnerByIdAsync), dataLoaderService.OwnerByIdAsync);
 
                 return loader.LoadAsync(context.Source.OwnerId);
             });
