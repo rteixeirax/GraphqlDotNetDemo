@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-using GraphqlDotNetDemo.Src.Data.Entities;
+using GraphqlDotNetDemo.Src.Data.Models;
 
 namespace GraphqlDotNetDemo.Src.Graphql.AccountGQL
 {

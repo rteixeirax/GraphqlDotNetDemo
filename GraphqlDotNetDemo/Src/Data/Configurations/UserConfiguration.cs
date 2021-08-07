@@ -1,4 +1,4 @@
-using GraphqlDotNetDemo.Src.Data.Entities;
+using GraphqlDotNetDemo.Src.Data.Models;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

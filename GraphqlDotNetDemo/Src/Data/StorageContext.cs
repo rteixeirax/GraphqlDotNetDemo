@@ -1,5 +1,5 @@
 using GraphqlDotNetDemo.Src.Data.Configurations;
-using GraphqlDotNetDemo.Src.Data.Entities;
+using GraphqlDotNetDemo.Src.Data.Models;
 using GraphqlDotNetDemo.Src.Data.Seeds;
 
 using Microsoft.EntityFrameworkCore;
