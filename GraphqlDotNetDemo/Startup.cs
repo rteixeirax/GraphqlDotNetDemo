@@ -35,7 +35,7 @@ namespace GraphqlDotNetDemo
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GraphqlDotNetDemo v1"));
 
                 // Graphql playground config (Only in dev)
-                app.UseGraphQLPlayground();
+                app.UseGraphQLPlayground(); // /ui/playground by default
             }
 
             app.UseHttpsRedirection();
@@ -45,7 +45,7 @@ namespace GraphqlDotNetDemo
             app.UseAuthorization();
 
             // Graphql Endpoint
-            app.UseGraphQL<GraphqlSchema>();
+            app.UseGraphQL<GraphqlSchema>(); // /graphql by default
 
             app.UseEndpoints(endpoints =>
             {
