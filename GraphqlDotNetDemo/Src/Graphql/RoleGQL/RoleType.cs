@@ -1,7 +1,7 @@
 using GraphQL.DataLoader;
 using GraphQL.Types;
 
-using GraphqlDotNetDemo.Src.Data.Models;
+using GraphqlDotNetDemo.Src.Data.Entities;
 using GraphqlDotNetDemo.Src.Graphql.UserGQL;
 using GraphqlDotNetDemo.Src.Services;
 

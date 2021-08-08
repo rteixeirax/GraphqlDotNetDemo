@@ -1,4 +1,4 @@
-using GraphqlDotNetDemo.Src.Data.Models;
+using GraphqlDotNetDemo.Src.Data.Entities;
 
 namespace GraphQLDotNet.Src.Data.Repositories
 {

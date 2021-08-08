@@ -1,6 +1,6 @@
 using GraphQL.Types;
 
-using GraphqlDotNetDemo.Src.Data.Models;
+using GraphqlDotNetDemo.Src.Data.Entities;
 
 namespace GraphqlDotNetDemo.Src.Graphql.UserGQL
 {

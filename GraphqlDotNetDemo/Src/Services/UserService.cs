@@ -1,6 +1,6 @@
 using GraphQLDotNet.Src.Data.Repositories;
 
-using GraphqlDotNetDemo.Src.Data.Models;
+using GraphqlDotNetDemo.Src.Data.Entities;
 
 using System;
 using System.Collections.Generic;

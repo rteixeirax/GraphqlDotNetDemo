@@ -1,6 +1,6 @@
 using System;
 
-namespace GraphqlDotNetDemo.Src.Data.Models
+namespace GraphqlDotNetDemo.Src.Data.Entities
 {
     public enum UserStatusEnum
     {

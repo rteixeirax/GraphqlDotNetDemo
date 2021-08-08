@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GraphqlDotNetDemo.Src.Data.Models
+namespace GraphqlDotNetDemo.Src.Data.Entities
 {
     public class Owner
     {

@@ -19,7 +19,7 @@ namespace GraphqlDotNetDemo.Src.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.8");
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.Account", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.Account", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ namespace GraphqlDotNetDemo.Src.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.Owner", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.Owner", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +96,7 @@ namespace GraphqlDotNetDemo.Src.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.Role", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -132,7 +132,7 @@ namespace GraphqlDotNetDemo.Src.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.User", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -180,9 +180,9 @@ namespace GraphqlDotNetDemo.Src.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.Account", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.Account", b =>
                 {
-                    b.HasOne("GraphqlDotNetDemo.Src.Data.Models.Owner", "Owner")
+                    b.HasOne("GraphqlDotNetDemo.Src.Data.Entities.Owner", "Owner")
                         .WithMany("Accounts")
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -191,9 +191,9 @@ namespace GraphqlDotNetDemo.Src.Data.Migrations
                     b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.User", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.User", b =>
                 {
-                    b.HasOne("GraphqlDotNetDemo.Src.Data.Models.Role", "Role")
+                    b.HasOne("GraphqlDotNetDemo.Src.Data.Entities.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -202,12 +202,12 @@ namespace GraphqlDotNetDemo.Src.Data.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.Owner", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.Owner", b =>
                 {
                     b.Navigation("Accounts");
                 });
 
-            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Models.Role", b =>
+            modelBuilder.Entity("GraphqlDotNetDemo.Src.Data.Entities.Role", b =>
                 {
                     b.Navigation("Users");
                 });
